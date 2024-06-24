@@ -69,15 +69,18 @@ export function LinkedList() {
     prevNode.next = null;
   };
 
-  const contains = (value) => {
+  const contains = (key) => {
     const listHead = head();
     if (!listHead) return false;
     let actual = listHead;
     while (actual.next !== null) {
-      if (actual.value === value) {
+      if (actual[key]) {
         return true;
       }
       actual = actual.next;
+    }
+    if (actual[key]) {
+      return true;
     }
     return false;
   };
