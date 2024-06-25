@@ -96,17 +96,20 @@ export function LinkedList() {
     return false;
   };
 
-  const find = (value) => {
+  const find = (key) => {
     const listHead = head();
-    if (!listHead) return false;
-    let counter = 0;
+    if (!listHead) return null;
     let actual = listHead;
-    while (actual.next !== null) {
-      if (actual.value === value) {
-        return counter;
+    while (actual !== null) {
+      const actualKey = Object.keys(actual)[0];
+      if (actualKey === key) {
+        return actual[actualKey];
       }
-      actual = actual.next;
-      counter += 1;
+      if (actual.next !== null) {
+        actual = actual.next;
+      } else {
+        return null;
+      }
     }
     if (actual.value === value) {
       return counter;
