@@ -2,7 +2,7 @@ import { LinkedList } from './linkedlist.js';
 import { Node } from './node.js';
 
 export function HashMap() {
-  const buckets = [];
+  let buckets = [];
 
   let capacity = 16;
 
@@ -93,7 +93,12 @@ export function HashMap() {
     return true;
   };
 
-  const clear = () => populateBuckets();
+  const clear = () => {
+    buckets = [];
+    capacity = 16;
+    updateKeysLength('clear');
+    populateBuckets();
+  };
 
   const keys = () => {
     const keysArray = [];
@@ -140,6 +145,7 @@ export function HashMap() {
       oldBuckets[i] = buckets[i];
     }
     capacity *= 2;
+    buckets = [];
     populateBuckets();
     updateKeysLength('clear');
     oldBuckets.forEach((bucket) => {
