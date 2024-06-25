@@ -6,6 +6,13 @@ export function HashMap() {
 
   let capacity = 16;
 
+  const capacityExceeded = () => {
+    if (keysLength + 1 / capacity > loadFactor) {
+      return true;
+    }
+    return false;
+  };
+
   const changeCapacity = (len) => (capacity = len);
 
   const loadFactor = 0.75;
