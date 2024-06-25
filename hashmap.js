@@ -124,6 +124,8 @@ export function HashMap() {
     return entriesArray;
   };
 
+  populateBuckets();
+
   return {
     buckets,
     changeCapacity,
