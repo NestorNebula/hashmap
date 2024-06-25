@@ -77,6 +77,7 @@ export function HashMap() {
     const hashCode = hash(key);
     const index = buckets[hashCode].findIndex(key);
     buckets[hashCode].removeAt(index);
+    updateKeysLength('remove');
     return true;
   };
 
