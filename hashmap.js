@@ -7,7 +7,7 @@ export function HashMap() {
   let capacity = 16;
 
   const capacityExceeded = () => {
-    if ((keysLength + 1) / capacity > loadFactor) {
+    if (keysLength / capacity > loadFactor) {
       return true;
     }
     return false;
@@ -64,11 +64,11 @@ export function HashMap() {
   const set = (key, value) => {
     const hashCode = hash(key);
     const node = new Node(key, value);
-    if (capacityExceeded() === true) {
-      growSize();
-    }
     if (buckets[hashCode].append(node) === true) {
       updateKeysLength('add');
+      if (capacityExceeded() === true) {
+        growSize();
+      }
     }
   };
 
