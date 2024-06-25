@@ -109,6 +109,21 @@ export function HashMap() {
     return valuesArray;
   };
 
+  const entries = () => {
+    const entriesArray = [];
+    buckets.forEach((bucket) => {
+      let actual = bucket.head();
+      while (actual != null) {
+        const keyvalueArray = [];
+        keyvalueArray.push(Object.keys(actual)[0]);
+        keyvalueArray.push(Object.values(actual)[0]);
+        entriesArray.push(keyvalueArray);
+        actual = actual.next;
+      }
+    });
+    return entriesArray;
+  };
+
   return {
     buckets,
     changeCapacity,
@@ -125,5 +140,6 @@ export function HashMap() {
     clear,
     keys,
     values,
+    entries,
   };
 }
