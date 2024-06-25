@@ -142,7 +142,7 @@ export function LinkedList() {
     let actual = listHead;
     let string = '';
     while (actual !== null) {
-      string += `( ${actual.value} ) -> `;
+      string += `( ${Object.keys(actual)[0]} ) -> `;
       actual = actual.next;
     }
     string += 'null';
