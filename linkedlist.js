@@ -5,6 +5,7 @@ export function LinkedList() {
     const listHead = head();
     if (!listHead) {
       list = node;
+      return true;
     } else {
       let previous = listHead;
       const nodeKey = Object.keys(node)[0];
@@ -12,12 +13,13 @@ export function LinkedList() {
         const previousKey = Object.keys(previous)[0];
         if (previousKey === nodeKey) {
           previous[previousKey] = node[nodeKey];
-          return;
+          return false;
         }
         if (previous.next !== null) {
           previous = previous.next;
         } else {
           previous.next = node;
+          return true;
         }
       }
     }

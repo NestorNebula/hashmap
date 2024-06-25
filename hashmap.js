@@ -55,7 +55,9 @@ export function HashMap() {
   const set = (key, value) => {
     const hashCode = hash(key);
     const node = new Node(key, value);
-    buckets[hashCode].append(node);
+    if (buckets[hashCode].append(node) === true) {
+      updateKeysLength('add');
+    }
   };
 
   return {
