@@ -13,8 +13,6 @@ export function HashMap() {
     return false;
   };
 
-  const changeCapacity = (len) => (capacity = len);
-
   const loadFactor = 0.75;
 
   let keysLength = 0;
@@ -37,12 +35,6 @@ export function HashMap() {
     for (let i = 0; i < capacity; i++) {
       buckets[i] = LinkedList();
     }
-  };
-
-  const displayBuckets = () => {
-    buckets.forEach((bucket) => {
-      console.log(bucket.head());
-    });
   };
 
   const checkIndex = (index) => {
@@ -88,6 +80,7 @@ export function HashMap() {
     }
     const hashCode = hash(key);
     const index = buckets[hashCode].findIndex(key);
+    checkIndex(index);
     buckets[hashCode].removeAt(index);
     updateKeysLength('remove');
     return true;
@@ -160,14 +153,7 @@ export function HashMap() {
   populateBuckets();
 
   return {
-    buckets,
-    changeCapacity,
     length,
-    updateKeysLength,
-    populateBuckets,
-    displayBuckets,
-    checkIndex,
-    hash,
     set,
     get,
     has,
