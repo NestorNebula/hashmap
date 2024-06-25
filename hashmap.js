@@ -4,7 +4,7 @@ import { Node } from './node.js';
 export function HashMap() {
   const buckets = [];
 
-  let capacity = 4;
+  let capacity = 16;
 
   const changeCapacity = (len) => (capacity = len);
 
