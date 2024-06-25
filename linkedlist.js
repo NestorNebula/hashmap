@@ -76,8 +76,12 @@ export function LinkedList() {
     const listHead = head();
     if (!listHead) return list;
     const listSize = size();
-    const prevNode = at(listSize - 2);
-    prevNode.next = null;
+    if (listSize === 1) {
+      list = null;
+    } else {
+      const prevNode = at(listSize - 2);
+      prevNode.next = null;
+    }
   };
 
   const contains = (key) => {
@@ -165,7 +169,11 @@ export function LinkedList() {
     if (!listHead || size() <= index) throw Error('Incorect Index');
     if (index === size() - 1) pop();
     else if (index === 0) {
-      list = at(1);
+      if (at(1) !== null) {
+        list = at(1);
+      } else {
+        list = null;
+      }
     } else {
       const previousNode = at(index - 1);
       const nextNode = at(index + 1);
