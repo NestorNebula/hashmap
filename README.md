@@ -2,6 +2,8 @@
 
 ## Description
 
+This project's goal is to create a HashMap using class/factory.
+
 This package contains:
 
 ### HashMap
