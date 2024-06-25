@@ -4,7 +4,7 @@ import { Node } from './node.js';
 export function HashMap() {
   const buckets = [];
 
-  let capacity = 16;
+  let capacity = 4;
 
   const changeCapacity = (len) => (capacity = len);
 
@@ -70,6 +70,16 @@ export function HashMap() {
     return buckets[hashCode].contains(key);
   };
 
+  const remove = (key) => {
+    if (has(key) === false) {
+      return false;
+    }
+    const hashCode = hash(key);
+    const index = buckets[hashCode].findIndex(key);
+    buckets[hashCode].removeAt(index);
+    return true;
+  };
+
   return {
     buckets,
     changeCapacity,
@@ -81,5 +91,6 @@ export function HashMap() {
     set,
     get,
     has,
+    remove,
   };
 }
