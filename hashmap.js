@@ -65,6 +65,11 @@ export function HashMap() {
     return buckets[hashCode].find(key);
   };
 
+  const has = (key) => {
+    const hashCode = hash(key);
+    return buckets[hashCode].contains(key);
+  };
+
   return {
     buckets,
     changeCapacity,
@@ -75,5 +80,6 @@ export function HashMap() {
     hash,
     set,
     get,
+    has,
   };
 }
