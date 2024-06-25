@@ -19,5 +19,17 @@ export function HashMap() {
     }
   };
 
-  return { buckets, changeCapacity, checkIndex, populateBuckets };
+  const displayBuckets = () => {
+    buckets.forEach((bucket) => {
+      console.log(bucket.head());
+    });
+  };
+
+  return {
+    buckets,
+    changeCapacity,
+    checkIndex,
+    populateBuckets,
+    displayBuckets,
+  };
 }
