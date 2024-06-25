@@ -80,22 +80,6 @@ export function LinkedList() {
     prevNode.next = null;
   };
 
-  const contains = (key) => {
-    const listHead = head();
-    if (!listHead) return false;
-    let actual = listHead;
-    while (actual.next !== null) {
-      if (actual[key]) {
-        return true;
-      }
-      actual = actual.next;
-    }
-    if (actual[key]) {
-      return true;
-    }
-    return false;
-  };
-
   const find = (key) => {
     const listHead = head();
     if (!listHead) return null;
@@ -110,11 +94,6 @@ export function LinkedList() {
       } else {
         return null;
       }
-    }
-    if (actual.value === value) {
-      return counter;
-    } else {
-      return null;
     }
   };
 
