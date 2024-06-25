@@ -9,6 +9,20 @@ export function HashMap() {
 
   const loadFactor = 0.75;
 
+  let keysLength = 0;
+
+  const updateKeysLength = (method) => {
+    if (method === 'add') {
+      keysLength += 1;
+    } else if (method === 'remove') {
+      keysLength -= 1;
+    } else if (method === 'clear') {
+      keysLength = 0;
+    } else {
+      throw Error('Wrong Method');
+    }
+  };
+
   const populateBuckets = () => {
     for (let i = 0; i < capacity; i++) {
       buckets[i] = LinkedList();
@@ -30,6 +44,7 @@ export function HashMap() {
   return {
     buckets,
     changeCapacity,
+    updateKeysLength,
     populateBuckets,
     displayBuckets,
     checkIndex,
