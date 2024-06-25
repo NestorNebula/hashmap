@@ -7,10 +7,19 @@ export function LinkedList() {
       list = node;
     } else {
       let previous = listHead;
-      while (previous.next !== null) {
-        previous = previous.next;
+      const nodeKey = Object.keys(node)[0];
+      while (previous !== null) {
+        const previousKey = Object.keys(previous)[0];
+        if (previousKey === nodeKey) {
+          previous[previousKey] = node[nodeKey];
+          return;
+        }
+        if (previous.next !== null) {
+          previous = previous.next;
+        } else {
+          previous.next = node;
+        }
       }
-      previous.next = node;
     }
   };
 
