@@ -7,7 +7,7 @@ export function HashMap() {
   let capacity = 16;
 
   const capacityExceeded = () => {
-    if (keysLength + 1 / capacity > loadFactor) {
+    if ((keysLength + 1) / capacity > loadFactor) {
       return true;
     }
     return false;
@@ -64,6 +64,9 @@ export function HashMap() {
   const set = (key, value) => {
     const hashCode = hash(key);
     const node = new Node(key, value);
+    if (capacityExceeded() === true) {
+      growSize();
+    }
     if (buckets[hashCode].append(node) === true) {
       updateKeysLength('add');
     }
@@ -129,6 +132,23 @@ export function HashMap() {
       }
     });
     return entriesArray;
+  };
+
+  const growSize = () => {
+    const oldBuckets = [];
+    for (let i = 0; i < capacity; i++) {
+      oldBuckets[i] = buckets[i];
+    }
+    capacity *= 2;
+    populateBuckets();
+    updateKeysLength('clear');
+    oldBuckets.forEach((bucket) => {
+      let actual = bucket.head();
+      while (actual !== null) {
+        set(Object.keys(actual)[0], Object.values(actual)[0]);
+        actual = actual.next;
+      }
+    });
   };
 
   populateBuckets();
