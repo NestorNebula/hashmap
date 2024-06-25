@@ -114,6 +114,25 @@ export function LinkedList() {
     }
   };
 
+  const findIndex = (key) => {
+    const listHead = head();
+    if (!listHead) return false;
+    let counter = 0;
+    let actual = listHead;
+    while (actual !== null) {
+      const actualKey = Object.keys(actual)[0];
+      if (actualKey === key) {
+        return counter;
+      }
+      if (actual.next) {
+        actual = actual.next;
+        counter += 1;
+      } else {
+        return false;
+      }
+    }
+  };
+
   const toString = () => {
     const listHead = head();
     let actual = listHead;
@@ -164,6 +183,7 @@ export function LinkedList() {
     pop,
     contains,
     find,
+    findIndex,
     toString,
     insertAt,
     removeAt,
