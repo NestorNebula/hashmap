@@ -5,15 +5,9 @@ export function HashMap() {
 
   let capacity = 16;
 
-  const loadFactor = 0.75;
-
   const changeCapacity = (len) => (capacity = len);
 
-  const checkIndex = (index) => {
-    if (index < 0 || index >= buckets.length) {
-      throw new Error('Trying to access index out of bound');
-    }
-  };
+  const loadFactor = 0.75;
 
   const populateBuckets = () => {
     for (let i = 0; i < capacity; i++) {
@@ -27,11 +21,17 @@ export function HashMap() {
     });
   };
 
+  const checkIndex = (index) => {
+    if (index < 0 || index >= buckets.length) {
+      throw new Error('Trying to access index out of bound');
+    }
+  };
+
   return {
     buckets,
     changeCapacity,
-    checkIndex,
     populateBuckets,
     displayBuckets,
+    checkIndex,
   };
 }
