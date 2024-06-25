@@ -5,6 +5,8 @@ export function HashMap() {
 
   let capacity = 16;
 
+  const loadFactor = 0.75;
+
   const changeCapacity = (len) => (capacity = len);
 
   const checkIndex = (index) => {
