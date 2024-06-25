@@ -52,6 +52,12 @@ export function HashMap() {
     return hashCode;
   };
 
+  const set = (key, value) => {
+    const hashCode = hash(key);
+    const node = new Node(key, value);
+    buckets[hashCode].append(node);
+  };
+
   return {
     buckets,
     changeCapacity,
@@ -60,5 +66,6 @@ export function HashMap() {
     displayBuckets,
     checkIndex,
     hash,
+    set,
   };
 }
