@@ -83,6 +83,8 @@ export function HashMap() {
     return true;
   };
 
+  const clear = () => populateBuckets();
+
   return {
     buckets,
     changeCapacity,
@@ -96,5 +98,6 @@ export function HashMap() {
     get,
     has,
     remove,
+    clear,
   };
 }
