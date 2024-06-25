@@ -12,6 +12,8 @@ export function HashMap() {
 
   let keysLength = 0;
 
+  const length = () => keysLength;
+
   const updateKeysLength = (method) => {
     if (method === 'add') {
       keysLength += 1;
@@ -84,6 +86,7 @@ export function HashMap() {
   return {
     buckets,
     changeCapacity,
+    length,
     updateKeysLength,
     populateBuckets,
     displayBuckets,
