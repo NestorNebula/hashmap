@@ -80,6 +80,23 @@ export function LinkedList() {
     prevNode.next = null;
   };
 
+  const contains = (key) => {
+    const listHead = head();
+    if (!listHead) return false;
+    let actual = listHead;
+    while (actual !== null) {
+      const actualKey = Object.keys(actual)[0];
+      if (actualKey === key) {
+        return true;
+      }
+      if (actual.next !== null) {
+        actual = actual.next;
+      } else {
+        return false;
+      }
+    }
+  };
+
   const find = (key) => {
     const listHead = head();
     if (!listHead) return null;
