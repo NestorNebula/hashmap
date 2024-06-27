@@ -28,3 +28,7 @@ The HashMap has a loadFactor of 0.75. Each time this load factor is reached. The
 This package is extending another package : [linkedlists-and-nodes](https://www.npmjs.com/package/linkedlists-and-nodes).
 
 Some functions of the LinkedList factory and the Node class were modified to work with the HashMap. They should still work independently from the HashMap but I recommend downloading the basis [Package](https://www.npmjs.com/package/linkedlists-and-nodes) for other uses.
+
+#### Package Link
+
+The package can be found at this [link](https://www.npmjs.com/package/hashmap-linkedlists-nodes).
